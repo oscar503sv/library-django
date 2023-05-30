@@ -1,0 +1,95 @@
+{% load static %}
+<!--   footer starts from here  -->
+<footer class="footer pb-0">
+    <!-- Copyright symbol of company -->
+    <div class="content has-text-centered">
+        <p>Copyright © <strong>Oscar Aragón</strong></p>
+
+    </div>
+    <!-- Three columns created using columns class of Bulma -->
+    <div class="columns is-multiline">
+        <!-- Column 1 -->
+        <div class="column is-half">
+            <!-- Heading is left aligned, medium weight -->
+            <h4 class="bd-footer-title 
+         has-text-weight-medium
+         has-text-left">
+                Library · Py
+            </h4>
+            <!-- footer content -->
+            <p class="bd-footer-link 
+        has-text-left">
+                This website has been created to practice and publicize my web programming skills,
+                it also has a blog with technology news.
+            </p>
+        </div>
+        <!-- Column 2 -->
+        <div class="column is-one-quarter">
+            <h4 class="bd-footer-title 
+         has-text-weight-medium 
+         has-text-justify">
+                Explore
+            </h4>
+            <!-- Column 2 lists with links -->
+            <p class="bd-footer-link">
+                <a href="https://">
+                    <span class="icon-text">
+                        <span>Blog</span>
+                    </span>
+                </a>
+                <br />
+                <a href="https://">
+                    <span class="icon-text">
+                        <span>Projects</span>
+                    </span>
+                </a>
+                <br />
+                <a href="https://">
+                    <span class="icon-text">
+                        <span>Bio</span>
+                    </span>
+                </a>
+            </p>
+
+        </div>
+        <!-- Column 3 -->
+        <div class="column is-one-quarter">
+            <h4 class="bd-footer-title
+         has-text-weight-medium
+         has-text-justify">
+                Contact me
+            </h4>
+            <!-- Column 3 lists with links -->
+            <p class="bd-footer-link">
+                <a href="https://">
+                    <span class="icon-text">
+                        <span>Email</span>
+                    </span>
+                </a>
+                <br />
+                <a href="https://">
+                    <span class="icon-text">
+                        <span>Linkedin</span>
+                    </span>
+                </a>
+                <br />
+                <a href="https://">
+                    <span class="icon-text">
+                        <span>Github</span>
+                    </span>
+                </a>
+            </p>
+        </div>
+        <!--Column-4-->
+        <div class="column pb-4 pr-6">
+            <p class="bd-footer-title
+                        has-text-weight-medium
+                        has-text-left">
+                Made in El Salvador
+            <figure class="image">
+                <img src="{% static 'elsalvador.png' %}" class="sv-flag" alt="El Salvador">
+            </figure>
+            </p>
+        </div>
+    </div>
+</footer>

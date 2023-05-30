@@ -1,0 +1,27 @@
+{% extends 'layout.html' %} 
+
+{% block content %}
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <section class="section is-medium">
+                <div class="box">
+                    <h1 class="title has-text-centered">Sistema de Biblioteca Py</h1>
+                    <h2 class="subtitle has-text-justified">
+                    Bienvenidas/os a la biblioteca Py. Registrate para poder administrar todo lo relacionado
+                    a la biblioteca, calificar libros, hacer reservas y más.
+                    <div class="buttons are-large is-centered mt-5 ">
+                        <a href="/register/" class="button is-warning">
+                          <strong>Register</strong>
+                        </a>
+                        <a href="/login/" class="button is-light">
+                          <strong>Log in</strong>
+                        </a>
+                      </div>
+                </h2>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

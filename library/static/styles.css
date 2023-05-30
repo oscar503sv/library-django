@@ -1,0 +1,60 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+body{
+        background-image: url('pattern.svg');
+}
+
+nav a.navbar-logo{
+        background: url('logo3.png') no-repeat center center;
+        background-size:contain;
+        width: 120px;
+        height: 80px;
+        margin-left: 5px;
+        margin-top: 0;
+        margin-bottom: 0;
+}
+
+.navbar{
+        background-color: #525252;
+        opacity: 0.95;
+        background-image: radial-gradient(#0d0f31 0.2px, 525252 0.2px);
+        background-size: 4px 4px;
+}
+
+nav div.navbar-start a{
+    color: bisque;
+}
+
+nav div.navbar-start a:hover{
+    color: rgb(164, 147, 126);
+}
+
+a.navbar-item:hover{
+        background-color: #525252;
+}
+
+a.navbar-item::before{
+        background-color: #525252;
+}
+
+.footer{
+        background-color: #525252;
+        color: white;
+}
+
+.footer strong{
+        color: white;
+}
+    
+p.bd-footer-link a{
+        color:bisque;
+}
+    
+p.bd-footer-link a:hover{
+        color:rgb(164, 147, 126);
+}
+
+figure img.sv-flag{
+        width: 55px;
+        height: 60px;
+}
