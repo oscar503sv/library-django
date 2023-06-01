@@ -5,12 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login PyDev</title>
+    <title>Iniciar sesión</title>
         <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
     <body>
         {% include 'partials/navbar-2.html' %}
-        
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <section class="section is-small">
+                        <div class="box">
+                            <h1 class="title has-text-centered">Iniciar sesión</h1>
+                            <form method="POST" class="has-text-centered">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="button is-primary mt-5">Iniciar sesión</button>
+                              </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
         {% include 'partials/footer.html' %}
     </body>
 </html>

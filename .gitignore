@@ -1,5 +1,14 @@
 # created by virtualenv automatically
 __pycache__
 venv
-db.sqlite3
+*~
+
+# Database
+*.sqlite3
+
+# Site data
 media
+staticfiles
+
+# Extra
+.vscode

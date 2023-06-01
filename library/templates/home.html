@@ -1,27 +1,35 @@
-{% extends 'layout.html' %} 
-
-{% block content %}
-<div class="container">
-    <div class="columns">
-        <div class="column">
-            <section class="section is-medium">
-                <div class="box">
-                    <h1 class="title has-text-centered">Sistema de Biblioteca Py</h1>
-                    <h2 class="subtitle has-text-justified">
-                    Bienvenidas/os a la biblioteca Py. Registrate para poder administrar todo lo relacionado
-                    a la biblioteca, calificar libros, hacer reservas y más.
-                    <div class="buttons are-large is-centered mt-5 ">
-                        <a href="/register/" class="button is-warning">
-                          <strong>Register</strong>
-                        </a>
-                        <a href="/login/" class="button is-light">
-                          <strong>Log in</strong>
-                        </a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema administración de biblioteca</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+    <body>
+        {% include 'partials/navbar-2.html' %}
+        <div class="container">
+          <div class="columns">
+              <div class="column">
+                  <section class="section is-medium">
+                      <div class="box">
+                          <h1 class="title has-text-centered">Sistema de Biblioteca Py</h1>
+                          <h2 class="subtitle has-text-justified">
+                          Bienvenidas/os a la biblioteca Py. En esta aplicación podrás administrar todo lo relacionado
+                          a la biblioteca, libros, hacer préstamos y más.
+                          <div class="buttons are-large is-centered mt-5 ">
+                              <a href="/login/" class="button is-warning">
+                                <strong>Iniciar sesión</strong>
+                              </a>
+                            </div>
+                      </h2>
                       </div>
-                </h2>
-                </div>
-            </section>
-        </div>
-    </div>
-</div>
-{% endblock %}
+                  </section>
+              </div>
+          </div>
+      </div>
+        {% include 'partials/footer.html' %}
+    </body>
+</html>
