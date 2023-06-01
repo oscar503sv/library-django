@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db.models.signals import post_save
 
 # Create your models here.
 class UsuarioManager(BaseUserManager):
@@ -32,10 +33,10 @@ class Usuario(AbstractBaseUser):
     username = models.CharField('Nombre de usuario',unique= True, max_length=100)
     email = models.EmailField('Correo electrónico', max_length=254, unique= True)
     nombres = models.CharField('Nombres', max_length=200, blank=True, null=True)
-    apellidos = models.CharField('Apellidos', max_length=254, blank=True, null=True)
-    imagen = models.ImageField('Imágen de perfil', upload_to='users/profilepics/', max_length=254, blank=True, null=True)
+    groups = models.ManyToManyField('auth.Group', blank=True) #para roles
     usuario_activo = models.BooleanField(default=True)
     usuario_administrador = models.BooleanField(default=False)
+    fecha_creacion = models.DateField(auto_now_add=True)
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'username'
@@ -54,22 +55,30 @@ class Usuario(AbstractBaseUser):
     def is_staff(self):
         return self.usuario_administrador
 
-class Lector(models.Model):
-    id_lector = models.BigAutoField('ID', primary_key=True)
-    nombre = models.CharField(max_length=100, null=False)
-    apellido = models.CharField(max_length=100, null=False)
-    email = models.EmailField('Correo electrónico', max_length=254, null=False)
+class Perfil(models.Model):
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='perfil', verbose_name='Usuario')
+    apellidos = models.CharField('Apellidos', max_length=254, blank=True, null=True)
+    imagen = models.ImageField('Imágen de perfil', upload_to='users/profilepics/', max_length=254, blank=True, null=True)
     telefono = models.CharField(max_length=9, null=False)
     direccion = models.TextField(null=True, blank=True)
-    fecha_creacion = models.DateField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Lector'
-        verbose_name_plural = 'Lectores'
-        ordering = ['nombre']
+        verbose_name = 'Perfil'
+        verbose_name_plural = 'Perfiles'
+        ordering = ['-id']
 
     def __str__(self):
-        return self.nombre +" "+self.apellido
+        return self.usuario.username
+    
+    def create_usuario_perfil(sender, instance, created, **kwargs):
+        if created:
+            Perfil.objects.create(usuario=instance)
+
+    def save_usuario_perfil(sender, instance, **kwargs):
+        instance.perfil.save()
+
+    post_save.connect(create_usuario_perfil, sender=Usuario)
+    post_save.connect(save_usuario_perfil, sender=Usuario)
 
 class Autor(models.Model):
     id_autor = models.BigAutoField('ID', primary_key=True)
@@ -145,7 +154,7 @@ class Libro(models.Model):
     
 class Prestamo(models.Model):
     id_prestamo = models.AutoField('ID', primary_key=True, null=False, blank=False)
-    lector_id = models.ForeignKey(Lector, null=False, blank=False, on_delete=models.CASCADE)
+    usuario_id = models.ForeignKey(Usuario, null=False, blank=False, on_delete=models.CASCADE)
     libro_id = models.ForeignKey(Libro, null=False, blank=False, on_delete=models.CASCADE)
     fecha_salida = models.DateField('Fecha de préstamo', auto_now_add=True, null=False, blank=False)
     fecha_entrada = models.DateField('Posible fecha de ingreso',blank=True, null=True)
