@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-SV">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +9,11 @@
         <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
     <body>
-        {% include 'partials/navbar.html' %}
         {% block content %}
         
         {% endblock %}
         {% include 'partials/footer.html' %}
     </body>
     <script src="{% static 'navbar.js' %}"></script>
+    <script src="https://kit.fontawesome.com/c08f7fafee.js" crossorigin="anonymous"></script>
 </html>

@@ -32,5 +32,5 @@ def register(request):
     return render(request, 'register.html')
 
 def render_libros(request):
-    libros = Libro.objects.all()
+    libros = Libro.objects.all().prefetch_related('autor_id','genero_id')
     return render(request,'books/books.html',{'libros':libros})

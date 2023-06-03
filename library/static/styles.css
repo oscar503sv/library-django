@@ -37,6 +37,26 @@ a.navbar-item::before{
         background-color: #525252;
 }
 
+.navbar-item.has-dropdown{
+        margin-right: 65px;
+}
+
+.navbar-item.has-dropdown a{
+        color: bisque;
+}
+
+.navbar-item.has-dropdown a:hover{
+        color: rgb(164, 147, 126);
+}
+
+.my-dropdown-color{
+        background-color: #525252;
+}
+
+div.navbar-dropdown a#logout:hover{
+        color: #ff3860 !important;
+}
+
 .footer{
         background-color: #525252;
         color: white;
@@ -58,3 +78,5 @@ figure img.sv-flag{
         width: 55px;
         height: 60px;
 }
+
+/*Estilos de tarjetas(cards)*/

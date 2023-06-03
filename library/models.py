@@ -166,5 +166,4 @@ class Prestamo(models.Model):
         ordering = ['fecha_salida']
 
     def __str__(self):
-        fecha = str(self.fecha_salida)
-        return str(self.libro_id.titulo+" "+fecha+" "+self.lector_id.nombre)
+        return self.libro_id.titulo

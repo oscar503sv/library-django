@@ -1,14 +1,65 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros</title>
-</head>
-<body>
-    {%for libro in libros %}
-    <h1>{{libro.titulo}}</h1>
-    {% endfor %}
-</body>
-</html>
+{% extends 'layout.html'%}
+
+{%block content%}
+    {% include 'partials/admin-menu.html' %}
+    <div class="container">
+        <section class="section is-small">
+            <h1 class="title has-text-centered is-uppercase">Catálogo de libros</h1>
+            <div class="columns is-multiline">
+                {% for libro in libros %}
+                <div class="column is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-4by5">
+                            <img src="{{libro.portada.url}}" alt="{{libro.titulo}}">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                          <div class="media">
+                            <div class="media-content">
+                              <p class="title is-5">{{libro.titulo}}</p>
+                              <p class="subtitle is-6">
+                                {% for autor in libro.autor_id.all %}
+                                {{autor.nombre}}
+                                {% endfor %}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="content">
+                                {{libro.descripcion|truncatechars:50}}
+                            <br>
+                            <span class="tag is-info is-light">
+                                {% for genero in libro.genero_id.all %}
+                                    {{genero.nombre}}
+                                {% endfor %}
+                            </span>
+                            <span class="tag is-primary is-light">{{libro.idioma_id}}</span>
+                            <br>
+                            <time class="is-size-7">{{libro.fecha_lanzamiento}}</time>
+                          </div>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                              <span class="icon">
+                                Disponibilidad:
+                                    {% if libro.cantidad_copias > 0 and libro.disponibilidad == True %}
+                                    <i class="fa-solid fa-circle-check pl-1 has-text-success"></i>
+                                    {% else %}
+                                    <i class="fa-solid fa-circle-check pl-1 has-text-danger"></i>
+                                    {% endif %}                                   
+                              </span>
+                            </p>
+                            <p class="card-footer-item">
+                              <span>
+                                <a href="#">Ver más</a>
+                              </span>
+                            </p>
+                          </footer>
+                      </div><!--div card-->    
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    
+{% endblock %}

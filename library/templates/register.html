@@ -1,13 +1,26 @@
-{% extends 'layout.html' %}
-{% block content %}
-<div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-        <section class="section is-small">
-            <div class="box">
-                <h1 class="title has-text-centered">Registrar usuario</h1>
-                
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+    <body>
+        {% include 'partials/default-menu.html' %}
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <section class="section is-small">
+                    <div class="box">
+                        <h1 class="title has-text-centered">Registrate</h1>
+                        
+                    </div>
+                </section>
             </div>
-        </section>
-    </div>
-</div>
-{% endblock %}
+        </div>
+        {% include 'partials/footer.html' %}
+        <script src="https://kit.fontawesome.com/c08f7fafee.js" crossorigin="anonymous"></script>
+    </body>
+</html>
