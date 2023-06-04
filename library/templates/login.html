@@ -16,10 +16,13 @@
                     <section class="section is-small">
                         <div class="box">
                             <h1 class="title has-text-centered">Iniciar sesión</h1>
-                            <form method="POST" class="has-text-centered">
+                            <form method="POST" class="has-text-justify">
                                 {% csrf_token %}
                                 {{ form.as_p }}
-                                <button type="submit" class="button is-primary mt-5">Iniciar sesión</button>
+                                <span>¿No tienes cuenta? <a href="/register/">Registrate.</a></span>
+                                <div class="has-text-centered">
+                                    <button type="submit" class="button is-medium is-primary mt-5">Iniciar sesión</button>
+                                </div>
                               </form>
                         </div>
                     </section>

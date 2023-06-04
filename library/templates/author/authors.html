@@ -1,0 +1,43 @@
+{% extends 'layout.html'%}
+
+{%block content%}
+    {% include 'partials/admin-menu.html' %}
+    <div class="container">
+        <section class="section">
+            <h1 class="title has-text-centered is-uppercase">Autores</h1>
+            <div class="table-container">
+                    <button class="button is-light is-link is-small mb-2">
+                        <span>
+                            <i class="fa-solid fa-circle-plus mr-1"></i>
+                        </span>
+                        <span>Nuevo Autor</span>
+                    </button>
+                    <table class="table is-bordered is-hoverable">
+                        <thead>
+                            <tr>
+                                <th><abbr title="ID de autor">ID</abbr></th>
+                                <th><abbr title="Nombres del autor">Nombres</abbr></th>
+                                <th><abbr title="Apellidos del autor">Apellidos</abbr></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for autor in autores %}
+                            <tr>
+                                <td>{{autor.id_autor}}</td>
+                                <td>{{autor.nombre}}</td>
+                                <td>{{autor.apellido}}</td>
+                                <td>
+                                    <div class="buttons are-small">
+                                        <button class="button is-warning is-light">Editar</button>
+                                        <button class="button is-danger is-light">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+        </section>
+    </div>
+{% endblock %}
